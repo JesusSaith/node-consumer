@@ -9,7 +9,7 @@ const kafka = new kafka({
   ]
   
 
-})
+});
 
 
 const producer = kafka.producer()
@@ -21,7 +21,7 @@ app.options('*', cors());
 const port = 8080;
 
 app.get('/', (req, res, next) => {
-  res.send('kafka api - adsoft');
+  res.send('kafka api - Saith');
 });
 
 const run = async (username) => {
