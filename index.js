@@ -1,13 +1,16 @@
-const cors = require('cors')
-const express = require('express')
-const { Kafka } = require('kafkajs')
+const cors = require ('cors')
+const express = require ('express')
+const {kafka} = require ('kafkajs')
 
-const kafka = new Kafka({
-  clientId: 'my-app',
+const kafka = new kafka({
+  clientId: 'my app',
   brokers: [
-	  'my-kafka-0.my-kafka-headless.jesussaith.svc.cluster.local:9092'
-	  ]
-});
+    'my-kafka-0.my-kafka-headless.jesussaith.svc.cluster.local:9092'
+  ]
+  
+
+})
+
 
 const producer = kafka.producer()
 
