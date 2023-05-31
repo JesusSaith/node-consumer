@@ -50,7 +50,7 @@ const ruun = async (uId, oId, rId) => {
   await producer.connect()
 //    await producer.send()
   await producer.send({
-    topic: 'reactions',
+    topic: 'reaction',
     messages: [ 
 { 
   'value': `{ "userid": "${uId}",  "objectid": "${oId}", "reactionid": "${rId}"}` 
@@ -61,9 +61,9 @@ const ruun = async (uId, oId, rId) => {
 }
 
 app.get('/reaction', (req, res, next) => {
-const uId = req.query.userId;
-const oId = req.query.objectId;
-const rId = req.query.reactionId;
+const uId = req.query.userid;
+const oId = req.query.objectid;
+const rId = req.query.reactionid;
 res.send({'userid:': uId, 'objectid': oId,'reactionid' : rId } );
 ruun(uId, oId, rId).catch(e => console.error(`[example/producer] ${e.message}`, e))
 
@@ -78,7 +78,7 @@ const r = async (uId, oId, comment) => {
     topic: 'comments',
     messages: [ 
   { 
-    'value': `{ "userId": "${uId}",  "objectId": "${oId}", "comment": "${comment}"}`
+    'value': `{ "userid": "${uId}",  "objectid": "${oId}", "comment": "${comment}"}`
   } 
     ],
   })
@@ -86,10 +86,10 @@ const r = async (uId, oId, comment) => {
 }
 
 app.get('/comments', (req, res, next) => {
-const uId = req.query.userId;
-const oId = req.query.objectId;
+const uId = req.query.userid;
+const oId = req.query.objectid;
 const comment = req.query.comment;
-res.send({'userId:': uId, 'objectId': oId,'comment' : comment} );
+res.send({'userid': uId, 'objectid': oId,'comment' : comment} );
 r(uId, oId, comment).catch(e => console.error(`[example/producer] ${e.message}`, e))
 
 });
