@@ -18,7 +18,7 @@ app.options('*', cors());
 const port = 8080;
 
 app.get('/', (req, res, next) => {
-  res.send('kafka api - BryanVRe');
+  res.send('kafka api - Jesus');
 });
 
 
@@ -53,7 +53,7 @@ const ruun = async (uId, oId, rId) => {
     topic: 'reactions',
     messages: [ 
 { 
-  'value': `{ "userId": "${uId}",  "objectId": "${oId}", "reactionId": "${rId}"}` 
+  'value': `{ "userid": "${uId}",  "objectid": "${oId}", "reactionid": "${rId}"}` 
   } 
     ],
   })
@@ -64,7 +64,7 @@ app.get('/reaction', (req, res, next) => {
 const uId = req.query.userId;
 const oId = req.query.objectId;
 const rId = req.query.reactionId;
-res.send({'userId:': uId, 'objectId': oId,'reactionId' : rId } );
+res.send({'userid:': uId, 'objectid': oId,'reactionid' : rId } );
 ruun(uId, oId, rId).catch(e => console.error(`[example/producer] ${e.message}`, e))
 
 });
