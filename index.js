@@ -89,7 +89,7 @@ app.get('/comments', (req, res, next) => {
 const uId = req.query.userid;
 const oId = req.query.objectid;
 const comment = req.query.comment;
-res.send({'userid': uId, 'objectid': oId,'comment' : comment} );
+res.send({'userid': uId, 'objectid': oId,'comments' : comment} );
 r(uId, oId, comment).catch(e => console.error(`[example/producer] ${e.message}`, e))
 
 });
